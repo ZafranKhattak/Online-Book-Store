@@ -1,6 +1,10 @@
 package Auth;
+
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 public class SignUp {
 
@@ -8,10 +12,10 @@ public class SignUp {
 
         JFrame frame = new JFrame("Sign Up");
         frame.setSize(900, 700);
-        frame.getContentPane().setBackground(new Color(18,18,18));
+        frame.getContentPane().setBackground(new Color(18, 18, 18));
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         // =========== Scale image =========== //
         ImageIcon icon = new ImageIcon("Auth/images.jpeg");
         Image img = icon.getImage().getScaledInstance(
@@ -29,17 +33,39 @@ public class SignUp {
 
         // =========== Label CREATE ACCOUNT =========== //
         JLabel label = new JLabel("Create Account");
-        label.setBounds(100, 20, 180, 30);
+        label.setBounds(100, 20, 180, 60);
         label.setForeground(Color.WHITE);
         label.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
-        // =========== TextField FOR NAME =========== //
-        JTextField textField = new JTextField();
-        textField.setBounds(80, 80, 180, 35);
+        // =========== firstName FOR NAME =========== //
+        JTextField firstName = new JTextField();
+        firstName.setBounds(80, 80, 180, 30);
+        firstName.setText("First Name");
+        firstName.setBackground(new Color(45, 45, 45));
+        firstName.setForeground(Color.WHITE);
+        firstName.setCaretColor(Color.WHITE);
+        firstName.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        firstName.setBorder(new LineBorder(new Color(80,80,80), 3 , true));
+        firstName.addFocusListener(new FocusAdapter() {
+        public void focusGained(FocusEvent e) {
+        if (firstName.getText().equals("First Name")) {
+        firstName.setText("");
+        }
+        }
+
+        public void focusLost(FocusEvent e)
+        {
+            if(firstName.getText().trim().isEmpty())
+            {
+                firstName.setText("First Name");
+                firstName.setForeground(Color.GRAY);
+            }
+        }
+        });
 
         panel.add(label);
-        panel.add(textField);
-
+        panel.add(firstName);
+        frame.add(panel);
         // =========== Add panel ON the background =========== //
         background.add(panel);
 

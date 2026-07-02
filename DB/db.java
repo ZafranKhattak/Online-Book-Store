@@ -10,10 +10,20 @@ public class DB {
     static final String pass = "ZafranKhan@06";
     public static void main(String[] args) {
         
+        try
+        {   
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        }
+        catch(Exception e)
+        {
+            e.getStackTrace();
+        }
       try {
-        System.out.print("Database Connection start");
+        System.out.println("Database Connection start");
         Connection connection = DriverManager.getConnection(url , user, pass);
-        System.out.print("Database Connection Successfuly");
+        System.out.println("Database Connection Successfuly");
+
+        connection.close();
       } catch (Exception e) {
         e.getStackTrace();
       }

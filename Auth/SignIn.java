@@ -1,9 +1,12 @@
 package Auth;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
+import Auth.SignUp;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.tools.JavaCompiler;
 
 public class SignIn
 {
@@ -17,14 +20,15 @@ public class SignIn
         // ===== BACKGROUND COLOR OF FRAME ========== //
         frame.getContentPane().setBackground(new Color(18, 18, 18));
 
-        // ===== BACKGROUND TEXT OF FRAME ========== //
+        // ============ IMAGE BACKGROUND ============== //
 
-        JLabel label = new JLabel();
-        label.setText("Welcome Dear");
-        label.setForeground(Color.WHITE);
-        label.setFont(new Font("Arial" , Font.BOLD , 20));
-        label.setBounds(575 , 70 , 250 , 50);
-        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));       
+         ImageIcon icon = new ImageIcon("Auth/signin.jpeg");
+         Image img = icon.getImage().getScaledInstance(
+                1300, 700, Image.SCALE_SMOOTH);
+
+        JLabel background = new JLabel(new ImageIcon(img));
+        background.setBounds(0, 0, 900, 600);
+        background.setLayout(null);      
         
 
         //  =============== JPANEL LOGIC =============== //
@@ -35,10 +39,11 @@ public class SignIn
 
         // ============ LABEL 2 LOGIN =================//
         JLabel label2 = new JLabel();
-        label2.setText("Log In");
+        label2.setText("<html><u>Log In</u></html>");
         label2.setForeground(Color.WHITE);
         label2.setBounds(150 , 10 , 90 , 25);
         label2.setFont(new Font("Arial" , Font.BOLD , 25 ));
+        label2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         // ============ LABEL 3 CREDENTIAL ============== //
         JLabel label3 = new JLabel();
@@ -57,7 +62,7 @@ public class SignIn
         email.setCaretColor(Color.WHITE);
         email.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         email.setBorder(BorderFactory.createLineBorder(new Color(80, 80, 80)));
-        email.setBorder(new LineBorder(new Color(80,80,80), 1 , true));
+        email.setBorder(new LineBorder(new Color(80,80,80), 3 , true));
 
         //  ============== PasswordField  ================ //
         JPasswordField passwordField = new JPasswordField();
@@ -66,30 +71,51 @@ public class SignIn
         passwordField.setForeground(Color.WHITE);
         passwordField.setCaretColor(Color.WHITE);
         passwordField.setText("Enter your password");
-        passwordField.setEchoChar('#');
-        JButton eye = new JButton("👁");
         passwordField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         passwordField.setBorder(BorderFactory.createLineBorder(new Color(80, 80, 80), 1));
-        passwordField.setBorder(new LineBorder(new Color(80,80,80), 1, true));
+        passwordField.setBorder(new LineBorder(new Color(80,80,80), 3, true));
 
         // =============== SIGN IN BUTTON ============== //
         JButton button = new JButton();
         button.setBounds(30 , 250 , 350 , 45);
-        button.setBackground(new Color(45,45,45));
+        button.setBackground(Color.BLUE);
         button.setText("Sign In");
         button.setForeground(Color.WHITE);
 
+        // =========== IF NOT SIGN IN THEN SIGN UP USING LINK
+
+        JLabel label4 = new JLabel();
+        label4.setLayout(null);
+        label4.setBounds(30 , 300 , 350 , 30);
+        label4.setForeground(Color.WHITE);
+        label4.setText("<html>Do not have Account ? <font color = 'blue'><u> Sign Up </u> </font><html>");   
+
+        label4.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e)
+            {
+                new SignUp();
+                frame.dispose();
+            }
+        });
+        label4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 
-
-        panel.add(eye);
         panel.add(button);
         panel.add(email);
         panel.add(passwordField);
         panel.add(label2);
         panel.add(label3);
-        frame.add(label);
+        panel.add(label4);
         frame.add(panel);
+
+
+        // ========= Add panel ON the background ========== //
+
+        background.add(panel);
+
+        // ======== Make background the content pane =========== //
+
+        frame.setContentPane(background);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

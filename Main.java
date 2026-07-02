@@ -1,8 +1,8 @@
-import Auth.SignUp;
+import Auth.SignIn;
 
 public class Main {
     public static void main(String[] args) {
         
-        new SignUp();
+        new SignIn();
     }
 }

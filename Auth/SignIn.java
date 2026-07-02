@@ -3,11 +3,11 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
-
-public class SignUp
+public class SignIn
 {
-    public SignUp()
+    public SignIn()
     {
 
         JFrame frame = new JFrame();
@@ -47,10 +47,45 @@ public class SignUp
         label3.setFont(new Font("Arial" , Font.ITALIC , 15));
         label3.setBounds(30 , 50 , 350 , 45);
        
-        // =============== JTEXTFEILD AREA LOGIC =============== //
+        // =============== JTEXTFEILD LOGIC =============== //
         
+        JTextField email = new JTextField();
+        email.setBounds(30 , 120 , 350 , 40);
+        email.setBackground(new Color(45, 45, 45));
+        email.setForeground(Color.WHITE);
+        email.setText("Enter your email");
+        email.setCaretColor(Color.WHITE);
+        email.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        email.setBorder(BorderFactory.createLineBorder(new Color(80, 80, 80)));
+        email.setBorder(new LineBorder(new Color(80,80,80), 1 , true));
+
+        //  ============== PasswordField  ================ //
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setBounds(30, 180, 350, 40);
+        passwordField.setBackground(new Color(45, 45, 45));
+        passwordField.setForeground(Color.WHITE);
+        passwordField.setCaretColor(Color.WHITE);
+        passwordField.setText("Enter your password");
+        passwordField.setEchoChar('#');
+        JButton eye = new JButton("👁");
+        passwordField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        passwordField.setBorder(BorderFactory.createLineBorder(new Color(80, 80, 80), 1));
+        passwordField.setBorder(new LineBorder(new Color(80,80,80), 1, true));
+
+        // =============== SIGN IN BUTTON ============== //
+        JButton button = new JButton();
+        button.setBounds(30 , 250 , 350 , 45);
+        button.setBackground(new Color(45,45,45));
+        button.setText("Sign In");
+        button.setForeground(Color.WHITE);
 
 
+
+
+        panel.add(eye);
+        panel.add(button);
+        panel.add(email);
+        panel.add(passwordField);
         panel.add(label2);
         panel.add(label3);
         frame.add(label);

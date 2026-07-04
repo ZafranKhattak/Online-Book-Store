@@ -14,7 +14,7 @@ public class SignIn {
 
         JFrame frame = new JFrame();
         frame.setTitle("Online Store");
-        frame.setSize(400, 400);
+        frame.setSize(900, 700);
 
         // ===== BACKGROUND COLOR OF FRAME ========== //
         frame.getContentPane().setBackground(new Color(18, 18, 18));
@@ -95,6 +95,7 @@ public class SignIn {
                 if (password.getPassword().length == 0) {
                     password.setEchoChar((char) 0);
                     password.setText("Enter your password");
+                    password.setForeground(Color.gray);
                 }
             }
         });

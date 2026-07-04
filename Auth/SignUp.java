@@ -17,7 +17,7 @@ public class SignUp {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // =========== Scale image =========== //
-        ImageIcon icon = new ImageIcon("Auth/images.jpeg");
+        ImageIcon icon = new ImageIcon("Auth/a.jpg");
         Image img = icon.getImage().getScaledInstance(
                 1300, 700, Image.SCALE_SMOOTH);
 

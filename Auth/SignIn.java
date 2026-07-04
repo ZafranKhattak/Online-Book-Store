@@ -21,7 +21,7 @@ public class SignIn {
 
         // ============ IMAGE BACKGROUND ============== //
 
-        ImageIcon icon = new ImageIcon("Auth/signin.jpeg");
+        ImageIcon icon = new ImageIcon("Auth/b.jpg");
         Image img = icon.getImage().getScaledInstance(
                 1300, 700, Image.SCALE_SMOOTH);
 

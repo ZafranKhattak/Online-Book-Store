@@ -45,26 +45,119 @@ public class SignUp {
         firstName.setForeground(Color.WHITE);
         firstName.setCaretColor(Color.WHITE);
         firstName.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        firstName.setBorder(new LineBorder(new Color(80,80,80), 3 , true));
-        firstName.addFocusListener(new FocusAdapter() {
-        public void focusGained(FocusEvent e) {
-        if (firstName.getText().equals("First Name")) {
-        firstName.setText("");
-        }
-        }
+        firstName.setBorder(new LineBorder(new Color(80, 80, 80), 3, true));
 
-        public void focusLost(FocusEvent e)
-        {
-            if(firstName.getText().trim().isEmpty())
-            {
-                firstName.setText("First Name");
-                firstName.setForeground(Color.GRAY);
+        // ========= FUNCITON ==============
+        firstName.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+                if (firstName.getText().equals("First Name")) {
+                    firstName.setText("");
+                }
             }
-        }
+
+            public void focusLost(FocusEvent e) {
+                if (firstName.getText().trim().isEmpty()) {
+                    firstName.setText("First Name");
+                    firstName.setForeground(Color.GRAY);
+                }
+            }
         });
+
+        // =================== Middle Name ===============
+
+        JTextField middleName = new JTextField();
+        middleName.setBounds(80, 120, 180, 30);
+        middleName.setText("Middle Name");
+        middleName.setBackground(new Color(45, 45, 45));
+        middleName.setForeground(Color.WHITE);
+        middleName.setCaretColor(Color.WHITE);
+        middleName.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        middleName.setBorder(new LineBorder(new Color(80, 80, 80), 3, true));
+
+        middleName.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+                if (middleName.getText().equals("middleName")) {
+                    middleName.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if (middleName.getText().trim().isEmpty()) {
+                    middleName.setText("Middle Name");
+                    middleName.setBackground(Color.GRAY);
+                }
+            }
+        });
+
+        // ============== LAST NAME ================= //
+
+        JTextField lastName = new JTextField();
+        lastName.setBounds(80, 160, 180, 30);
+        lastName.setText("Last Name");
+        lastName.setBackground(new Color(45, 45, 45));
+        lastName.setForeground(Color.WHITE);
+        lastName.setCaretColor(Color.WHITE);
+        lastName.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        lastName.setBorder(new LineBorder(new Color(80, 80, 80), 3, true));
+
+        lastName.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+                if (lastName.getText().equals("Last Name")) {
+                    lastName.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e) {
+                if (lastName.getText().trim().isEmpty()) {
+                    lastName.setText("Last Name");
+                    lastName.setBackground(Color.GRAY);
+                }
+            }
+        });
+
+
+        // =============== EMAIL  ============= //
+
+        JTextField email = new JTextField();
+        email.setText("Email");
+        email.setBounds(80 , 200 , 180 , 30);
+        email.setForeground(Color.WHITE);
+        email.setCaretColor(Color.WHITE);
+        email.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        email.setBorder(new LineBorder(new Color(80, 80, 80), 3, true));
+
+        email.addFocusListener(new FocusAdapter() {
+            
+                public void focusGained(FocusEvent e) 
+                {
+                if (email.getText().equals("Email"))
+                {
+                    email.setText("");
+                }
+            }
+
+            public void focusLost(FocusEvent e)
+            {
+                if (email.getText().trim().isEmpty())
+                {
+                    email.setText("Email");
+                    email.setBackground(Color.gray);
+
+                }
+            }
+            
+        });
+
+
+
+
 
         panel.add(label);
         panel.add(firstName);
+        panel.add(middleName);
+        panel.add(lastName);
+        panel.add(email);
+
         frame.add(panel);
         // =========== Add panel ON the background =========== //
         background.add(panel);

@@ -1,5 +1,6 @@
 package Auth;
 
+import java.sql.*;
 import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -49,58 +50,53 @@ public class SignIn {
         label3.setFont(new Font("Arial", Font.ITALIC, 15));
         label3.setBounds(30, 50, 350, 45);
 
-        // =============== JTEXTFEILD LOGIC =============== //
+        // =============== JTEXTFEILD NAME LOGIC =============== //
 
         JTextField email = new JTextField();
         email.setText("Enter your name");
 
         email.addFocusListener(new FocusAdapter() {
-        public void focusGained(FocusEvent e) {
-        if (email.getText().equals("Enter your name")) {
-         email.setText("");
-        }
-        }
+            public void focusGained(FocusEvent e) {
+                if (email.getText().equals("Enter your name")) {
+                    email.setText("");
+                }
+            }
 
-        public void focusLost(FocusEvent e) {
-        if (email.getText().trim().isEmpty()) {
-        email.setText("Enter your name");
-        email.setForeground(Color.GRAY);
-        }
-        }
+            public void focusLost(FocusEvent e) {
+                if (email.getText().trim().isEmpty()) {
+                    email.setText("Enter your name");
+                    email.setForeground(Color.GRAY);
+                }
+            }
         });
-        email.setBounds(30 , 120 , 350 , 40);
+        email.setBounds(30, 120, 350, 40);
         email.setBackground(new Color(45, 45, 45));
         email.setForeground(Color.WHITE);
         email.setCaretColor(Color.WHITE);
         email.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        email.setBorder(new LineBorder(new Color(80,80,80), 3 , true));
+        email.setBorder(new LineBorder(new Color(80, 80, 80), 3, true));
 
-
-        // ============== password ================ //
+        // ============== PASSWORD LOGIC ================ //
         JPasswordField password = new JPasswordField();
         password.setBounds(30, 180, 350, 40);
         password.setBackground(new Color(45, 45, 45));
         password.setForeground(Color.GRAY);
         password.setText("Enter your password");
-        password.setEchoChar((char) 0);   // Show placeholder text
+        password.setEchoChar((char) 0); // Show placeholder text
         password.addFocusListener(new FocusAdapter() {
-        public void focusGained(FocusEvent e)
-           {
-            if (String.valueOf(password.getPassword()).equals("Enter your password"))
-            {
-                password.setText("");
-                 password.setEchoChar('•');   // Hide typed characters
+            public void focusGained(FocusEvent e) {
+                if (String.valueOf(password.getPassword()).equals("Enter your password")) {
+                    password.setText("");
+                    password.setEchoChar('•'); // Hide typed characters
+                }
             }
-           } 
 
-           public void focusLost(FocusEvent e)
-           {
-            if (password.getPassword().length== 0)
-            {
-                password.setEchoChar((char) 0); 
-                password.setText("Enter your password");
+            public void focusLost(FocusEvent e) {
+                if (password.getPassword().length == 0) {
+                    password.setEchoChar((char) 0);
+                    password.setText("Enter your password");
+                }
             }
-           }
         });
         password.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         password.setBorder(new LineBorder(new Color(80, 80, 80), 3, true));
@@ -112,6 +108,44 @@ public class SignIn {
         button.setText("Sign In");
         button.setForeground(Color.WHITE);
 
+        button.addActionListener(e -> {
+
+            String userEmail = email.getText().trim();
+            String userPassword = String.valueOf(password.getPassword());
+
+            if (userPassword.length() < 8) {
+                JOptionPane.showMessageDialog(null, "Password must be at least 8 characters.");
+                return;
+            }
+
+            try {
+                Connection connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/ONLINE_STORE",
+                        "root",
+                        "ZafranKhan@06");
+
+                String query = "SELECT * FROM USERS WHERE EMAIL = ? AND PASSWORD = ?";
+
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setString(1, userEmail);
+                statement.setString(2, userPassword);
+
+                ResultSet rs = statement.executeQuery();
+
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(null, "Login Successful");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Email or Password");
+                }
+
+                rs.close();
+                statement.close();
+                connection.close();
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        });
         // =========== IF NOT SIGN IN THEN SIGN UP USING LINK
 
         JLabel label4 = new JLabel();

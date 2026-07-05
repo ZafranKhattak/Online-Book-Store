@@ -11,7 +11,7 @@ public class AddBook {
         frame.getContentPane().setBackground(Color.BLACK);
         frame.setLayout(null);
         frame.setVisible(true);
-        frame.setSize(400, 400);
+        frame.setSize(900, 700);
         frame.setTitle("Add Book Detail");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -149,6 +149,18 @@ public class AddBook {
                 JOptionPane.showMessageDialog(null, e1.getMessage());
             }
         });
+
+        // ===================== BACK BUTTON ===================== //
+
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(50 ,470 , 300 , 50);
+        backButton.setBackground(Color.RED);
+        backButton.setForeground(Color.BLACK);
+
+        backButton.addActionListener(e ->{
+            new Dashboard();
+            frame.dispose();
+        });
     // ==================== ADD TO FRAME ====================//
     frame.add(panel);
     panel.add(label);
@@ -158,6 +170,7 @@ public class AddBook {
     panel.add(field4);
     panel.add(field5);
     panel.add(btn);
+    panel.add(backButton);
     panel.add(bn);
     panel.add(ba);
     panel.add(qa);

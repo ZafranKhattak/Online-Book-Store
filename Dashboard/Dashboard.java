@@ -1,20 +1,17 @@
 package Dashboard;
+
 import javax.swing.*;
+import Auth.SignIn;
 import java.awt.*;
 
 public class Dashboard {
 
     public Dashboard() {
         JFrame frame = new JFrame("DASHBOARD");
-       
-        ImageIcon icon = new ImageIcon("Dashboard/a.jpeg");
-        Image img = icon.getImage().getScaledInstance(1800, 800, Image.SCALE_SMOOTH);
-        JLabel background = new JLabel(new ImageIcon(img));
-        background.setBounds(0, 0, 1900, 00);
-        background.setLayout(null);
+        frame.getContentPane().setBackground(Color.BLACK);
         frame.setLayout(null);
         frame.setVisible(true);
-        frame.setSize(400, 400);
+        frame.setSize(900, 700);
         frame.setTitle("Add Book Detail");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -78,13 +75,24 @@ public class Dashboard {
         buttonTodayButton.setForeground(Color.BLACK);
         buttonTodayButton.setFont(new Font("Arial" , Font.BOLD, 15));
 
+        // ===================== BACK BUTTON ===================== //
+
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(60 ,370 , 300 , 40);
+        backButton.setBackground(Color.RED);
+        backButton.setForeground(Color.BLACK);
+
+        backButton.addActionListener(e ->{
+            new SignIn();
+            frame.dispose();
+        });
         frame.add(panel);
-        frame.add(background);
         panel.add(label);
         panel.add(buttonAddBook);
         panel.add(buttonViewButton);
         panel.add(buttonUpdateButton);
         panel.add(buttonSellButton);
         panel.add(buttonTodayButton);
+        panel.add(backButton);
     }
 }

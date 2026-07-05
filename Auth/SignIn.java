@@ -135,11 +135,12 @@ public class SignIn {
 
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Login Successful");
+                    new AddBook();
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid Email or Password");
+                    return;
                 }
 
-                new AddBook();
                 rs.close();
                 statement.close();
                 connection.close();

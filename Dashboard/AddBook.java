@@ -102,31 +102,27 @@ public class AddBook {
                 double purchasePrice = Double.parseDouble(field4.getText().trim());
                 double sellPrice = Double.parseDouble(field5.getText().trim());
 
-                if (qty <0)
+                if (qty <1)
                 {
                     JOptionPane.showMessageDialog(null, "Enter valid quantity");
                     return;
                 }
-                 if (purchasePrice.isEmpty())
-                 {
-                    JOptionPane.showMessageDialog(null, "Enter purchase price");
-                    return;
-                 }
+                 
                  if (purchasePrice <1)
                  {
                     JOptionPane.showMessageDialog(null, "Enter valid purchase price");
+                    return;
                  }
-                 if (sellPrice.isEmpty())
-                 {
-                    JOptionPane.showMessageDialog(null, "Enter sell price");
-                 }
+        
                    if (sellPrice < purchasePrice)
                  {
                     JOptionPane.showMessageDialog(null, "Enter valid sell price");
+                    return;
                  }
             } catch (NumberFormatException ex) 
             {
                 JOptionPane.showMessageDialog(null, "Please enter a valid number.");
+                return;
             }
 
             if (bookName.isEmpty())

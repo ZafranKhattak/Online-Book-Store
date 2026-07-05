@@ -1,5 +1,6 @@
 package Auth;
-import Dashboard.AddBook;
+
+import Dashboard.Dashboard;
 import java.sql.*;
 import java.awt.*;
 import java.awt.event.FocusAdapter;
@@ -135,7 +136,8 @@ public class SignIn {
 
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Login Successful");
-                    new AddBook();
+                    new Dashboard();
+                    frame.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid Email or Password");
                     return;

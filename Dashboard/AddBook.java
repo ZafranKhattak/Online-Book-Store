@@ -91,6 +91,7 @@ public class AddBook {
         btn.setBounds(50, 410, 300, 50);
         btn.setBackground(Color.BLUE);
         btn.setForeground(Color.BLACK);
+        btn.setText("Save");
         btn.setFont(new Font("Arial", Font.BOLD, 15));
 
         btn.addActionListener(e -> {
@@ -116,7 +117,7 @@ public class AddBook {
         
                    if (sellPrice < purchasePrice)
                  {
-                    JOptionPane.showMessageDialog(null, "Enter valid sell price");
+                    JOptionPane.showMessageDialog(null, "Enter valid sell price. Should greater than purchase price ");
                     return;
                  }
             } catch (NumberFormatException ex) 
@@ -156,6 +157,7 @@ public class AddBook {
     panel.add(field2);
     panel.add(field4);
     panel.add(field5);
+    panel.add(btn);
     panel.add(bn);
     panel.add(ba);
     panel.add(qa);

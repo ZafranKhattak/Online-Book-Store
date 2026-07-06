@@ -19,7 +19,7 @@ public class Book {
 
         JScrollPane scroll = new JScrollPane(panel);
 
-        scroll.setBounds(0, 0, 1300, 900);
+        scroll.setBounds(60, 0, 1300, 900);
         scroll.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.setHorizontalScrollBarPolicy(
@@ -32,30 +32,41 @@ public class Book {
                 {
                         "BooksPage/img1.png",
                         "BooksPage/img2.jpeg",
-                },
-                {
                         "BooksPage/img3.png",
                         "BooksPage/img4.jpeg",
+                        "BooksPage/img5.jpeg",
                 },
+               
                 {
                         "BooksPage/img5.jpeg",
                         "BooksPage/img6.jpeg",
-                },
-                {
                         "BooksPage/img7.jpeg",
                         "BooksPage/img8.jpeg",
-                },
-                {
                         "BooksPage/img9.jpeg",
-                        "BooksPage/img10.jpeg",
                 },
                 {
+                       
+                        "BooksPage/img10.jpeg",
                         "BooksPage/img11.jpeg",
                         "BooksPage/img12.jpeg",
-                },
-                {
                         "BooksPage/img13.jpeg",
+                },
+                
+                {
+                      
                         "BooksPage/img14.jpeg",
+                        "BooksPage/img11.jpeg",
+                        "BooksPage/img12.jpeg",
+                        "BooksPage/img12.jpeg",
+                        "BooksPage/img12.jpeg",
+                },
+                 {
+                      
+                        "BooksPage/img14.jpeg",
+                        "BooksPage/img11.jpeg",
+                        "BooksPage/img12.jpeg",
+                        "BooksPage/img12.jpeg",
+                        "BooksPage/img12.jpeg",
                 }
         };
 
@@ -70,19 +81,6 @@ public class Book {
                 panel.add(book);
             }
         }
-        // JLabel b1 = createImage("BooksPage/img1.png", 0, 10, 300, 400);
-        // JLabel b2 = createImage("BooksPage/img2.jpeg",320, 10,300, 400 );
-        // JLabel b3 = createImage("BooksPage/img3.png",640, 10,300, 400 );
-        // JLabel b4 = createImage("BooksPage/img4.jpeg",960, 10,300, 400 );
-        // JLabel b5 = createImage("BooksPage/img5.jpeg",0, 430,300, 400 );
-
-        // ===================== ADD TO FRAME ==========================
-
-        // panel.add(b1);
-        // panel.add(b2);
-        // panel.add(b3);
-        // panel.add(b4);
-        // panel.add(b5);
         frame.add(scroll);
     }
 

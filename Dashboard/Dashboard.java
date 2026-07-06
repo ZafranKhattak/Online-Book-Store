@@ -2,6 +2,8 @@ package Dashboard;
 
 import javax.swing.*;
 import Auth.SignIn;
+import BooksPage.Book;
+
 import java.awt.*;
 
 public class Dashboard {
@@ -75,6 +77,16 @@ public class Dashboard {
         buttonTodayButton.setForeground(Color.BLACK);
         buttonTodayButton.setFont(new Font("Arial" , Font.BOLD, 15));
 
+        // ===================== VIEW BOOKS BUTTON ======================//
+        JButton viewButton = new JButton("View Books");
+        viewButton.setBounds(60 ,370 , 300 , 40);
+        viewButton.setBounds(60 , 300 , 300 , 40);
+        viewButton.setBackground(Color.BLUE);
+        viewButton.setForeground(Color.BLACK);
+        viewButton.setFont(new Font("Arial" , Font.BOLD, 15));
+        viewButton.addActionListener(e->{
+            new Book();
+        });
         // ===================== BACK BUTTON ===================== //
 
         JButton backButton = new JButton("Back");

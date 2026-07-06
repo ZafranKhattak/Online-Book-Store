@@ -79,8 +79,7 @@ public class Dashboard {
 
         // ===================== VIEW BOOKS BUTTON ======================//
         JButton viewButton = new JButton("View Books");
-        viewButton.setBounds(60 ,370 , 300 , 40);
-        viewButton.setBounds(60 , 300 , 300 , 40);
+        viewButton.setBounds(60 , 350 , 300 , 40);
         viewButton.setBackground(Color.BLUE);
         viewButton.setForeground(Color.BLACK);
         viewButton.setFont(new Font("Arial" , Font.BOLD, 15));
@@ -90,7 +89,7 @@ public class Dashboard {
         // ===================== BACK BUTTON ===================== //
 
         JButton backButton = new JButton("Back");
-        backButton.setBounds(60 ,370 , 300 , 40);
+        backButton.setBounds(60 ,430 , 300 , 40);
         backButton.setBackground(Color.RED);
         backButton.setForeground(Color.BLACK);
 
@@ -105,6 +104,7 @@ public class Dashboard {
         panel.add(buttonUpdateButton);
         panel.add(buttonSellButton);
         panel.add(buttonTodayButton);
+        panel.add(viewButton);
         panel.add(backButton);
     }
 }

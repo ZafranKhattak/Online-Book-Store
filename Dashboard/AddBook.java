@@ -98,54 +98,59 @@ public class AddBook {
 
             String bookName = field.getText().trim().toLowerCase();
             String authorName = field2.getText().trim().toLowerCase();
-            try {
-                double qty = Double.parseDouble(field3.getText().trim());
-                double purchasePrice = Double.parseDouble(field4.getText().trim());
-                double sellPrice = Double.parseDouble(field5.getText().trim());
 
-                if (qty <1)
-                {
-                    JOptionPane.showMessageDialog(null, "Enter valid quantity");
-                    return;
-                }
-                 
-                 if (purchasePrice <1)
-                 {
-                    JOptionPane.showMessageDialog(null, "Enter valid purchase price");
-                    return;
-                 }
-        
-                   if (sellPrice < purchasePrice)
-                 {
-                    JOptionPane.showMessageDialog(null, "Enter valid sell price. Should greater than purchase price ");
-                    return;
-                 }
-            } catch (NumberFormatException ex) 
-            {
-                JOptionPane.showMessageDialog(null, "Please enter a valid number.");
+            double qty = Double.parseDouble(field3.getText().trim());
+            double purchasePrice = Double.parseDouble(field4.getText().trim());
+            double sellPrice = Double.parseDouble(field5.getText().trim());
+
+            if (qty < 1) {
+                JOptionPane.showMessageDialog(null, "Enter valid quantity");
                 return;
             }
 
-            if (bookName.isEmpty())
-            {
+            else if (purchasePrice < 1) {
+                JOptionPane.showMessageDialog(null, "Enter valid purchase price");
+                return;
+            }
+
+            else if (sellPrice < purchasePrice) {
+                JOptionPane.showMessageDialog(null, "Enter valid sell price. Should greater than purchase price ");
+                return;
+            }
+
+            else if (bookName.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Write Book Name");
                 return;
-            }
-            else if (authorName.isEmpty())
-            {
+            } else if (authorName.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Write Author Name");
                 return;
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter a valid number.");
             }
-            try{
+            try {
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ONLINE_STORE",
                         "root",
                         "ZafranKhan@06");
 
-                
-                // PreparedStatement ps = conn.prepareStatement(query);
+                String query = "INSERT INTO Books(author_name , book_name , book_qty , purchase_price , sell_price) VALUES(? , ? , ? , ? , ?) ";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1, authorName);
+                statement.setString(2, bookName);
+                statement.setDouble(3, qty);
+                statement.setDouble(4, purchasePrice);
+                statement.setDouble(5, sellPrice);
+
+                int affectedRows = statement.executeUpdate();
+                if (affectedRows > 0) {
+                    JOptionPane.showMessageDialog(null, "Book Added Successfully");
+                    return;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Book Not added");
+                }
                 conn.close();
-            } 
-            catch (Exception e1) {
+                statement.close();
+
+            } catch (Exception e1) {
                 JOptionPane.showMessageDialog(null, e1.getMessage());
             }
         });
@@ -153,28 +158,29 @@ public class AddBook {
         // ===================== BACK BUTTON ===================== //
 
         JButton backButton = new JButton("Back");
-        backButton.setBounds(50 ,470 , 300 , 50);
+        backButton.setBounds(50, 470, 300, 50);
         backButton.setBackground(Color.RED);
         backButton.setForeground(Color.BLACK);
 
-        backButton.addActionListener(e ->{
+        backButton.addActionListener(e -> {
             new Dashboard();
             frame.dispose();
         });
-    // ==================== ADD TO FRAME ====================//
-    frame.add(panel);
-    panel.add(label);
-    panel.add(field);
-    panel.add(field3);
-    panel.add(field2);
-    panel.add(field4);
-    panel.add(field5);
-    panel.add(btn);
-    panel.add(backButton);
-    panel.add(bn);
-    panel.add(ba);
-    panel.add(qa);
-    panel.add(pp);
-    panel.add(pP);
+        // ==================== ADD TO FRAME ====================//
+        frame.add(panel);
+        panel.add(label);
+        panel.add(field);
+        panel.add(field3);
+        panel.add(field2);
+        panel.add(field4);
+        panel.add(field5);
+        panel.add(btn);
+        panel.add(backButton);
+        panel.add(bn);
+        panel.add(ba);
+        panel.add(qa);
+        panel.add(pp);
+        panel.add(pP);
 
-}}
+    }
+}

@@ -3,7 +3,6 @@ package Dashboard;
 import javax.swing.*;
 import Auth.SignIn;
 import BooksPage.Book;
-
 import java.awt.*;
 
 public class Dashboard {
@@ -58,7 +57,9 @@ public class Dashboard {
         buttonUpdateButton.setBackground(Color.BLUE);
         buttonUpdateButton.setForeground(Color.BLACK);
         buttonUpdateButton.setFont(new Font("Arial" , Font.BOLD, 15));
-
+        buttonUpdateButton.addActionListener(e->{
+            new UpdateBook();
+        });
         // ==============  SELL BOOK BUTTON ================ //
 
         JButton buttonSellButton = new JButton();

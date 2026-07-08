@@ -2,12 +2,14 @@ package Dashboard;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-
-public class UpdateBook {
-    
-    public UpdateBook()
+public class DeleteBook
+{
+    public DeleteBook()
     {
         JFrame frame = new JFrame("UPDATE WINDOW");
         frame.setSize(600, 700);
@@ -172,13 +174,13 @@ public class UpdateBook {
                         "root",
                         "ZafranKhan@06");
 
-                        String query = "UPDATE Books set sell_price = ? where book_name = ? and author_name = ?";
+                        String query = "DELETE FROM Books where book_name = ? and author_name = ?";
 
                         PreparedStatement ps = conn.prepareStatement(query);
-                        ps.setString(1 , authorName);
-                        ps.setString(2, bookName);
+                        ps.setString(1 , bookName);
+                        ps.setString(2, authorName);
                         ps.setDouble(3, updatedPrice);
-                        int affectedRows = ps.executeUpdate();
+                        int affectedRows = ps.executeUpdate ();
 
                         if (affectedRows >0)
                         {
@@ -214,5 +216,5 @@ public class UpdateBook {
                 frame.dispose();
             }
         );
-}
+    }
 }

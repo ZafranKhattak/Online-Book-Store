@@ -42,13 +42,6 @@ public class Dashboard {
             frame.dispose();
         });
 
-        // ================ VIEW BOOK BUTTON ===============//
-        JButton buttonViewButton = new JButton();
-        buttonViewButton.setText("View Book");
-        buttonViewButton.setBounds(60 , 150 , 300 , 40);
-        buttonViewButton.setBackground(Color.BLUE);
-        buttonViewButton.setForeground(Color.BLACK);
-        buttonViewButton.setFont(new Font("Arial" , Font.BOLD, 15));
 
         // ================ UPDATE BOOK BUTTON ===============//
         JButton buttonUpdateButton = new JButton();
@@ -60,6 +53,19 @@ public class Dashboard {
         buttonUpdateButton.addActionListener(e->{
             new UpdateBook();
         });
+
+        // ================ Delete BOOK BUTTON ===============//
+        JButton buttonViewButton = new JButton();
+        buttonViewButton.setText("Delete Book");
+        buttonViewButton.setBounds(60 , 150 , 300 , 40);
+        buttonViewButton.setBackground(Color.BLUE);
+        buttonViewButton.setForeground(Color.BLACK);
+        buttonViewButton.setFont(new Font("Arial" , Font.BOLD, 15));
+        buttonViewButton.addActionListener(e->
+            {
+                new DeleteBook();
+            }
+        );
         // ==============  SELL BOOK BUTTON ================ //
 
         JButton buttonSellButton = new JButton();

@@ -46,7 +46,7 @@ public class Dashboard {
         // ================ UPDATE BOOK BUTTON ===============//
         JButton buttonUpdateButton = new JButton();
         buttonUpdateButton.setText("Update Book");
-        buttonUpdateButton.setBounds(60 , 200 , 300 , 40);
+        buttonUpdateButton.setBounds(60 , 150 , 300 , 40);
         buttonUpdateButton.setBackground(Color.BLUE);
         buttonUpdateButton.setForeground(Color.BLACK);
         buttonUpdateButton.setFont(new Font("Arial" , Font.BOLD, 15));
@@ -57,7 +57,7 @@ public class Dashboard {
         // ================ Delete BOOK BUTTON ===============//
         JButton buttonViewButton = new JButton();
         buttonViewButton.setText("Delete Book");
-        buttonViewButton.setBounds(60 , 150 , 300 , 40);
+        buttonViewButton.setBounds(60 , 200 , 300 , 40);
         buttonViewButton.setBackground(Color.BLUE);
         buttonViewButton.setForeground(Color.BLACK);
         buttonViewButton.setFont(new Font("Arial" , Font.BOLD, 15));

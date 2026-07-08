@@ -3,6 +3,8 @@ package BooksPage;
 import Dashboard.Dashboard;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.sql.*;
 
 public class Book {
@@ -88,10 +90,29 @@ public class Book {
 
                 JTextField searchBook = new JTextField();
                 searchBook.setLayout(null);
+                searchBook.setText("Book Name");
                 searchBook.setBounds(400, 30, 250, 30);
                 searchBook.setBackground(Color.GRAY);
                 searchBook.setForeground(Color.white);
 
+                searchBook.addFocusListener(new FocusAdapter() {
+
+                        @Override
+                        public void focusGained(FocusEvent e) {
+                                if (searchBook.getText().equals("Book Name")) {
+                                        searchBook.setText("");
+                                        searchBook.setForeground(Color.BLACK);
+                                }
+                        }
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
+                                if (searchBook.getText().trim().isEmpty()) {
+                                        searchBook.setText("Book Name");
+                                        searchBook.setForeground(Color.GRAY);
+                                }
+                        }
+                });
                 // ================= BUTTON FOR SEARCH ===============//
                 JButton searchButton = new JButton();
                 searchButton.setLayout(null);
@@ -119,13 +140,13 @@ public class Book {
                                         String name = rs.getString("Name");
                                         double price = rs.getDouble("Sell_Price");
                                         String author = rs.getString("Author");
-                  
+
                                         JOptionPane.showMessageDialog(
                                                         null,
                                                         "Book Name: " + name +
                                                                         "\nAuthor: " + author +
                                                                         "\nPrice: " + price);
-                                                                        
+
                                 } else {
                                         JOptionPane.showMessageDialog(null, "This book not Avialable");
                                         return;
@@ -145,7 +166,7 @@ public class Book {
                 backButton.setForeground(Color.BLACK);
 
                 backButton.addActionListener(e -> {
-                       new Dashboard();
+                        new Dashboard();
                         frame.dispose();
                 });
                 frame.add(backButton);
